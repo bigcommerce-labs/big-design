@@ -1,17 +1,19 @@
 import { Breakpoints, breakpointsOrder, ThemeInterface } from '@bigcommerce/big-design-theme';
-import { css, FlattenSimpleInterpolation } from 'styled-components';
+import { css, RuleSet } from 'styled-components';
+
+import { WithTransients } from 'src/utils/withTransients';
 
 import { DisplayOverload, DisplayProps } from './types';
 
-export const withDisplay = () => css<DisplayProps>`
-  ${({ display, theme }) => display && getDisplayStyles(display, theme, 'display')};
+export const withDisplay = () => css<WithTransients<DisplayProps>>`
+  ${({ $display, theme }) => $display && getDisplayStyles($display, theme, 'display')};
 `;
 
 const getDisplayStyles: DisplayOverload = (
   displayProp: any,
   theme: ThemeInterface,
   cssKey: any,
-): FlattenSimpleInterpolation => {
+): RuleSet => {
   if (typeof displayProp === 'object') {
     return getResponsiveDisplay(displayProp, theme, cssKey);
   }
@@ -23,10 +25,7 @@ const getDisplayStyles: DisplayOverload = (
   return [];
 };
 
-const getSimpleDisplay = (
-  displayProp: string | number,
-  cssKey: string,
-): FlattenSimpleInterpolation => css`
+const getSimpleDisplay = (displayProp: string | number, cssKey: string): RuleSet => css`
   ${cssKey}: ${displayProp}
 `;
 
@@ -34,7 +33,7 @@ const getResponsiveDisplay: DisplayOverload = (
   displayProp: any,
   theme: ThemeInterface,
   cssKey: string,
-): FlattenSimpleInterpolation[] => {
+): RuleSet[] => {
   const breakpointKeys = Object.keys(displayProp).sort(
     (firstBreakpoint, secondBreakpoint) =>
       // eslint-disable-next-line @typescript-eslint/consistent-type-assertions

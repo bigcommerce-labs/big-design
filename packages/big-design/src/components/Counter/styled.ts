@@ -1,5 +1,5 @@
 import { theme as defaultTheme, remCalc } from '@bigcommerce/big-design-theme';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 import { StyleableButton } from '../Button/private';
 import { StyledInput, StyledInputWrapper, StyledInputWrapperProps } from '../Input/private';
@@ -35,5 +35,3 @@ export const StyledCounterInput = styled(StyledInput)`
 `;
 
 StyledCounterButton.defaultProps = { theme: defaultTheme };
-StyledCounterInput.defaultProps = { theme: defaultTheme };
-StyledCounterWrapper.defaultProps = { theme: defaultTheme };

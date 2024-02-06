@@ -1,5 +1,5 @@
 import { theme as defaultTheme } from '@bigcommerce/big-design-theme';
-import styled, { css, DefaultTheme, StyledComponent } from 'styled-components';
+import { css, IStyledComponent, styled } from 'styled-components';
 
 import { getBorderStyle } from '../../utils';
 import { Flex } from '../Flex';
@@ -38,7 +38,7 @@ export const StyledHeader = styled(StyleableH4)`
   margin-bottom: ${({ theme }) => theme.spacing.none};
 `;
 
-export const StyledMessageItem = styled<StyledComponent<'span', DefaultTheme, Partial<TextProps>>>(
+export const StyledMessageItem = styled<IStyledComponent<'web', Partial<TextProps>>>(
   StyleableSmall,
 ).attrs({ as: 'span' })`
   color: ${({ theme }) => theme.colors.secondary70};
@@ -57,7 +57,5 @@ export const StyledActionsWrapper = styled(Flex)`
 `;
 
 StyledInlineMessage.defaultProps = { theme: defaultTheme };
-StyledHeader.defaultProps = { theme: defaultTheme };
-StyledMessageItem.defaultProps = { theme: defaultTheme };
 StyledLink.defaultProps = { theme: defaultTheme };
 StyledActionsWrapper.defaultProps = { theme: defaultTheme };
