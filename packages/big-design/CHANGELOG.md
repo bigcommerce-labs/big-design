@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.7.0
+
+### Minor Changes
+
+- 5e0589f: Added FeatureSet component
+
 ## 1.6.2
 
 ### Patch Changes
